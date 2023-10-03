@@ -31,7 +31,7 @@ public class TicTacToeController {
 	public void handleButtonClick(int i, int j) {
 		if(this.view.getButtonText(i,j) != " " || model.isGameover()) return;
 		this.view.setButtonText(i,j,model.getCurrentPlayerSymbol()+"");
-   		model.getBoard()[i][j] = model.getCurrentPlayerSymbol();
+   		model.move(i,j);
    		if(model.checkIfCurrentPlayerwin()) {
    			this.view.updateMyLabel("player "+ (model.getTurn()+1)+ " won!");
    			model.setGameover(true);
