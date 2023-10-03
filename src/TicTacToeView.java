@@ -35,7 +35,7 @@ public class TicTacToeView {
 	        JPanel myTextPanel = new JPanel();
 	        myTextPanel.setLayout(new GridLayout(1,1));
 	        myTextPanel.setPreferredSize(new Dimension(150,50));
-	        myLabel = new JLabel("player 1's turn", SwingConstants.CENTER);
+	        myLabel = new JLabel("", SwingConstants.CENTER);
 	        myTextPanel.add(myLabel);
 	        
 	        JPanel myMainPanel = new JPanel();

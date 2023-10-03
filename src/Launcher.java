@@ -8,7 +8,7 @@ public class Launcher {
 		players[1]= new TicTacToePlayer('B', "Sara");
 		TicTacToeEngine model= new TicTacToeEngine(board, players);
 		TicTacToeView  view= new TicTacToeView ();
-		TicTacToeController controller= new TicTacToeController(model, view);
+		TicTacToeController controller= new TicTacToeController(model, view, 3);
 
 	}
 
