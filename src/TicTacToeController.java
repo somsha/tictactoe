@@ -2,10 +2,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TicTacToeController {
-	private TicTacToeModel model;
+	private TicTacToeEngine model;
 	private TicTacToeView view;
 	
-	public TicTacToeController(TicTacToeModel model, TicTacToeView view) {
+	public TicTacToeController(TicTacToeEngine model, TicTacToeView view) {
 		this.model=model;
 		this.view=view;
 		

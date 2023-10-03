@@ -1,12 +1,12 @@
 
-public class TicTacToeModel{
+public class TicTacToeEngine implements Engine{
 	private int turn = 0;
 	
 	private boolean gameover = false;
 	private Player[] players;
 	private Board board;
 	
-	public TicTacToeModel(Board board , Player[] players) {
+	public TicTacToeEngine(Board board , Player[] players) {
 		
 	    this.board = board;
 	    this.players = players;	
@@ -57,6 +57,7 @@ public class TicTacToeModel{
 		}
 	}
 	
+	@Override
 	public Player getCurrentPlayer() {
 	    return players[turn];
 	}
