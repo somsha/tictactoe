@@ -34,6 +34,33 @@ public class TicTacToeModel{
 		this.gameover=gameover;
 		
 	}
+	
+	public boolean checkIfCurrentPlayerwin() {
+		boolean win = false;
+		
+		
+		char c = getCurrentPlayerSymbol();
+		if(board[0][0] == c && board[0][1] == c && board[0][2] == c)
+			win = true;
+		if(board[1][0] == c && board[1][1] == c && board[1][2] == c)
+			win = true;
+		if(board[2][0] == c && board[2][1] == c && board[2][2] == c)
+			win = true;
+
+		if(board[0][0] == c && board[1][0] == c && board[2][0] == c)
+			win = true;
+		if(board[0][1] == c && board[1][1] == c && board[2][1] == c)
+			win = true;
+		if(board[0][2] == c && board[1][2] == c && board[2][2] == c)
+			win = true;
+
+		if(board[0][0] == c && board[1][1] == c && board[2][2] == c)
+			win = true;
+		if(board[0][2] == c && board[1][1] == c && board[2][0] == c)
+			win = true;
+		
+		return win;
+	}
 	public boolean checkifP1win() {
 		boolean win = false;
 		
@@ -93,6 +120,21 @@ public class TicTacToeModel{
 	public char getCurrentPlayerSymbol() {
 		return players[turn].getSymbol();
 		
+	}
+	
+	public int getNextPlayer() {
+		if(turn==0) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	public void moveToNextPlayer() {
+		if(turn==0) {
+			turn=1;
+		}else {
+			turn=0;
+		}
 	}
 
 }

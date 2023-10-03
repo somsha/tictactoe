@@ -30,28 +30,16 @@ public class TicTacToeController {
 	}
 	public void handleButtonClick(int i, int j) {
 		if(this.view.getButtonText(i,j) != " " || model.isGameover()) return;
-		if(model.getTurn() == 0) {
-			this.view.setButtonText(i,j,model.getCurrentPlayerSymbol()+"");
-       		model.getBoard()[i][j] = model.getCurrentPlayerSymbol();
-       		if(model.checkifP1win()) {
-       			this.view.updateMyLabel("player 1 won!");
-       			model.setGameover(true);
-       			return;
-       		}
-		 	model.setTurn(1);
-    		this.view.updateMyLabel("player 2's turn");
-		}
-		else {
-			this.view.setButtonText(i,j,model.getCurrentPlayerSymbol()+"");
-       		model.getBoard()[i][j] = model.getCurrentPlayerSymbol();
-       		if(model.checkifP2win()) {
-       			this.view.updateMyLabel("player 2 won!");
-       			model.setGameover(true);
-       			return;
-       		}
-			model.setTurn(0);
-			this.view.updateMyLabel("player 1's turn");
-		}
+		this.view.setButtonText(i,j,model.getCurrentPlayerSymbol()+"");
+   		model.getBoard()[i][j] = model.getCurrentPlayerSymbol();
+   		if(model.checkIfCurrentPlayerwin()) {
+   			this.view.updateMyLabel("player "+ (model.getTurn()+1)+ " won!");
+   			model.setGameover(true);
+   			return;
+   		}
+   		model.moveToNextPlayer(); 
+   		this.view.updateMyLabel("player "+ (model.getNextPlayer()+1)+ " turn");
+   		
 
 	}
 	
