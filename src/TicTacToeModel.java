@@ -6,14 +6,10 @@ public class TicTacToeModel{
 	private Player[] players;
 	private Board board;
 	
-	public TicTacToeModel() {
-		this.board= new Board(3);
-
+	public TicTacToeModel(Board board , Player[] players) {
 		
-		players= new Player[2];
-		players[0]= new Player('A');
-		players[1]= new Player('B');
-		
+	    this.board = board;
+	    this.players = players;	
 	}
 	
 	
