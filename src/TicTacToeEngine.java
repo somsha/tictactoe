@@ -13,22 +13,28 @@ public class TicTacToeEngine implements Engine{
 	}
 	
 	
-	
+	@Override
 	public int getTurn() {
 		return turn;
 	}
+	
+	@Override
 	public void setTurn(int p) {
 		turn=p;
 	}
 	
+	@Override
 	public boolean isGameover() {
 		return gameover;
 	}
+	
+	@Override
 	public void setGameover(boolean gameover) {
 		this.gameover=gameover;
 		
 	}
 	
+	@Override
 	public boolean checkIfCurrentPlayerwin() {
 		return board.checkIfPlayerwin(getCurrentPlayer());
 	}
@@ -37,18 +43,7 @@ public class TicTacToeEngine implements Engine{
 		board.move(i, j, getCurrentPlayer());
 	}
 	
-	public char getCurrentPlayerSymbol() {
-		return players[turn].getSymbol();
-		
-	}
-	
-	public int getNextPlayer() {
-		if(turn==0) {
-			return 1;
-		}else {
-			return 0;
-		}
-	}
+	@Override
 	public void moveToNextPlayer() {
 		if(turn==0) {
 			turn=1;
