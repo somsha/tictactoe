@@ -1,11 +1,13 @@
 
 public class Board {
-	private char[][] board = new char[3][3];
+	private final char[][] board;
+	private final int size;
 	
-	
-	public Board() {
-		for(int x = 0; x < 3; x++)
-			for(int y = 0; y < 3; y++) {
+	public Board(int size) {
+		this.size = size;
+		board = new char[size][size];
+		for(int  x= 0; x < size; x++)
+			for(int y = 0; y <size; y++) {
 				board[x][y] = ' ';
 			}
 	}
@@ -15,28 +17,54 @@ public class Board {
 	}
 	
 	public boolean checkIfPlayerwin(Player player) {
-		boolean win = false;
-		
 		
 		char c = player.getSymbol();
-		if(board[0][0] == c && board[0][1] == c && board[0][2] == c)
-			win = true;
-		if(board[1][0] == c && board[1][1] == c && board[1][2] == c)
-			win = true;
-		if(board[2][0] == c && board[2][1] == c && board[2][2] == c)
-			win = true;
-
-		if(board[0][0] == c && board[1][0] == c && board[2][0] == c)
-			win = true;
-		if(board[0][1] == c && board[1][1] == c && board[2][1] == c)
-			win = true;
-		if(board[0][2] == c && board[1][2] == c && board[2][2] == c)
-			win = true;
-
-		if(board[0][0] == c && board[1][1] == c && board[2][2] == c)
-			win = true;
-		if(board[0][2] == c && board[1][1] == c && board[2][0] == c)
-			win = true;
+		
+		for (int i=0; i<size; i++) {
+			boolean win =true;
+			for (int j=0; j<size; j++) {
+				if(board[i][j]!= c) {
+					win=false;
+					break;
+				}
+			}
+			if (win) {
+				return true;
+			}
+		}
+		
+		for (int j=0; j<size; j++) {
+			boolean win =true;
+			for (int i=0; i<size; i++) {
+				if(board[i][j]!= c) {
+					win=false;
+					break;
+				}
+			}
+			if (win) {
+				return true;
+			}
+		}
+		
+		boolean win=true;
+		for (int i=0; i<size; i++) {
+			if(board[i][i]!= c) {
+				win=false;
+				break;
+			}
+		}
+		if (win) {
+			return true;
+		}
+		
+	    win =true;
+		for (int i=0; i<size; i++) {
+			if(board[i][size-i-1]!= c) {
+				win=false;
+				break;
+			}
+		}
+		
 		
 		return win;
 	}

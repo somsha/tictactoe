@@ -7,7 +7,7 @@ public class TicTacToeModel{
 	private Board board;
 	
 	public TicTacToeModel() {
-		this.board= new Board();
+		this.board= new Board(3);
 
 		
 		players= new Player[2];
