@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class TicTacToeView {
+	JButton[][] buttons = new JButton[3][3];
 	JButton button1;
 	JButton button2;
 	JButton button3;
@@ -29,25 +30,15 @@ public class TicTacToeView {
 	        
 	        myButtonPanel.setLayout(new GridLayout(3,3));
 	        
-	        button1 = new JButton(" ");
-	        button1.setPreferredSize(new Dimension(50,50));
-	        myButtonPanel.add(button1);
-	        button2 = new JButton(" ");
-	        myButtonPanel.add(button2);
-	        button3 = new JButton(" ");
-	        myButtonPanel.add(button3);
-	        button4 = new JButton(" ");
-	        myButtonPanel.add(button4);
-	        button5 = new JButton(" ");
-	        myButtonPanel.add(button5);
-	        button6 = new JButton(" ");
-	        myButtonPanel.add(button6);
-	        button7 = new JButton(" ");
-	        myButtonPanel.add(button7);
-	        button8 = new JButton(" ");
-	        myButtonPanel.add(button8);
-	        button9 = new JButton(" ");
-	        myButtonPanel.add(button9);
+	        
+	        for( int i=0; i<3; i++) { 
+	        	for(int j=0; j<3; j++) {
+	        		buttons[i][j]= new JButton(" ");
+	        		buttons[i][j].setPreferredSize(new Dimension(50,50));
+	     	        myButtonPanel.add(buttons[i][j]);
+	        	}
+	        }
+	        
 
 	        JPanel myTextPanel = new JPanel();
 	        myTextPanel.setLayout(new GridLayout(1,1));
