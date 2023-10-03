@@ -14,13 +14,14 @@ public class TicTacToeController {
 		for( int i=0; i<3; i++) {
 			for(int j=0; j<3; j++) {
 				final int r = i;
-                final int c = j;
-				this.view.buttons[i][j].addActionListener(new ActionListener() {
+                final int c = j; 
+                ActionListener actionListener=new ActionListener() {
 		        	@Override
 		        	public void actionPerformed(ActionEvent e) {
 		        		handleButtonClick(r,c);	
 		        	}
-		        });
+		        };
+				this.view.addButtonActionListener(i,j, actionListener);
 				
 			}
 		}
@@ -28,28 +29,28 @@ public class TicTacToeController {
 		
 	}
 	public void handleButtonClick(int i, int j) {
-		if(this.view.buttons[i][j].getText() != " " || model.isGameover()) return;
+		if(this.view.getButtonText(i,j) != " " || model.isGameover()) return;
 		if(model.getPlayer() == 0) {
-			this.view.buttons[i][j].setText("O");
+			this.view.setButtonText(i,j,"O");
        		model.getBoard()[i][j] = 'O';
        		if(model.checkifP1win()) {
-       			this.view.myLabel.setText("player 1 won!");
+       			this.view.updateMyLabel("player 1 won!");
        			model.setGameover(true);
        			return;
        		}
 		 	model.setPlayer(1);
-    		this.view.myLabel.setText("player 2's turn");
+    		this.view.updateMyLabel("player 2's turn");
 		}
 		else {
-			this.view.buttons[i][j].setText("X");
+			this.view.setButtonText(i ,j,"X");
        		model.getBoard()[i][j] = 'X';
        		if(model.checkifP2win()) {
-       			this.view.myLabel.setText("player 2 won!");
+       			this.view.updateMyLabel("player 2 won!");
        			model.setGameover(true);
        			return;
        		}
 			model.setPlayer(0);
-			this.view.myLabel.setText("player 1's turn");
+			this.view.updateMyLabel("player 1's turn");
 		}
 
 	}

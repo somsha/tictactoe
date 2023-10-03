@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,17 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class TicTacToeView {
-	JButton[][] buttons = new JButton[3][3];
-	JButton button1;
-	JButton button2;
-	JButton button3;
-	JButton button4;
-	JButton button5;
-	JButton button6;
-	JButton button7;
-	JButton button8;
-	JButton button9;
-	JLabel  myLabel;
+	private JButton[][] buttons = new JButton[3][3];
+	private JLabel  myLabel;
 	 
 	
 	public TicTacToeView() {
@@ -57,6 +49,19 @@ public class TicTacToeView {
 	        //Display the window.
 	        frame.pack();
 	        frame.setVisible(true);
+	}
+	public void updateMyLabel(String s) {
+		myLabel.setText(s);
+	}
+	
+	public String getButtonText(int i, int j) {
+		return buttons[i][j].getText();
+	}
+	public void setButtonText(int i, int j, String s ) {
+		buttons[i][j].setText(s);	
+	}
+	public void addButtonActionListener(int i,int j,ActionListener actionListener ) {
+		buttons[i][j].addActionListener(actionListener );
 	}
 
 }
