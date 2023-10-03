@@ -1,8 +1,9 @@
 
 public class TicTacToeModel{
-	private int player = 0;
+	private int turn = 0;
 	private char[][] board = new char[3][3];
 	private boolean gameover = false;
+	private Player[] players;
 	
 	public TicTacToeModel() {
 
@@ -10,13 +11,18 @@ public class TicTacToeModel{
 			for(int y = 0; y < 3; y++) {
 				board[x][y] = ' ';
 			}
-		
+		players= new Player[2];
+		players[0]= new Player('A');
+		players[1]= new Player('B');
 	}
-	public int getPlayer() {
-		return player;
+	
+	
+	
+	public int getTurn() {
+		return turn;
 	}
-	public void setPlayer(int p) {
-		player=p;
+	public void setTurn(int p) {
+		turn=p;
 	}
 	public char[][] getBoard() {
 		return board;
@@ -32,23 +38,24 @@ public class TicTacToeModel{
 		boolean win = false;
 		
 		
-		if(board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O')
+		char c = players[0].getSymbol();
+		if(board[0][0] == c && board[0][1] == c && board[0][2] == c)
 			win = true;
-		if(board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O')
+		if(board[1][0] == c && board[1][1] == c && board[1][2] == c)
 			win = true;
-		if(board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')
-			win = true;
-
-		if(board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')
-			win = true;
-		if(board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')
-			win = true;
-		if(board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')
+		if(board[2][0] == c && board[2][1] == c && board[2][2] == c)
 			win = true;
 
-		if(board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')
+		if(board[0][0] == c && board[1][0] == c && board[2][0] == c)
 			win = true;
-		if(board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
+		if(board[0][1] == c && board[1][1] == c && board[2][1] == c)
+			win = true;
+		if(board[0][2] == c && board[1][2] == c && board[2][2] == c)
+			win = true;
+
+		if(board[0][0] == c && board[1][1] == c && board[2][2] == c)
+			win = true;
+		if(board[0][2] == c && board[1][1] == c && board[2][0] == c)
 			win = true;
 		
 		return win;
@@ -56,26 +63,36 @@ public class TicTacToeModel{
 	public boolean checkifP2win() {
 		boolean win = false;
 		
-		if(board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
+		char c = players[1].getSymbol();
+		if(board[0][0] == c && board[0][1] == c && board[0][2] == c)
 			win = true;
-		if(board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')
+		if(board[1][0] == c && board[1][1] == c && board[1][2] == c)
 			win = true;
-		if(board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')
-			win = true;
-
-		if(board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')
-			win = true;
-		if(board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X')
-			win = true;
-		if(board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')
+		if(board[2][0] == c && board[2][1] == c && board[2][2] == c)
 			win = true;
 
-		if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
+		if(board[0][0] == c && board[1][0] == c && board[2][0] == c)
 			win = true;
-		if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')
+		if(board[0][1] == c && board[1][1] == c && board[2][1] == c)
+			win = true;
+		if(board[0][2] == c && board[1][2] == c && board[2][2] == c)
+			win = true;
+
+		if(board[0][0] == c && board[1][1] == c && board[2][2] == c)
+			win = true;
+		if(board[0][2] == c && board[1][1] == c && board[2][0] == c)
 			win = true;
 		
 		return win;	
+	}
+	
+	public void updateBoard(int i,int j) {
+		board[i][j]=getCurrentPlayerSymbol();
+	}
+	
+	public char getCurrentPlayerSymbol() {
+		return players[turn].getSymbol();
+		
 	}
 
 }
