@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class TicTacToeView {
+public class TicTacToeView implements View {
 	private JButton[][] buttons;
 	private JLabel  myLabel;
 	 
@@ -51,16 +51,23 @@ public class TicTacToeView {
         frame.pack();
         frame.setVisible(true);
 	}
-	public void updateMyLabel(String s) {
+	
+	@Override
+	public void updateStatus(String s) {
 		myLabel.setText(s);
 	}
 	
+	@Override
 	public String getButtonText(int i, int j) {
 		return buttons[i][j].getText();
 	}
+	
+	@Override
 	public void setButtonText(int i, int j, String s ) {
 		buttons[i][j].setText(s);	
 	}
+	
+	@Override
 	public void addButtonActionListener(int i,int j,ActionListener actionListener ) {
 		buttons[i][j].addActionListener(actionListener );
 	}

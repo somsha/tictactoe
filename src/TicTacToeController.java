@@ -3,9 +3,9 @@ import java.awt.event.ActionListener;
 
 public class TicTacToeController {
 	private Engine engine;
-	private TicTacToeView view;
+	private View view;
 	
-	public TicTacToeController(Engine model, TicTacToeView view, int size) {
+	public TicTacToeController(Engine model, View view, int size) {
 		this.engine=model;
 		this.view=view;
 		
@@ -25,19 +25,19 @@ public class TicTacToeController {
 				
 			}
 		}
-		this.view.updateMyLabel("player "+ model.getCurrentPlayer().getName()+ " turn");
+		this.view.updateStatus("player "+ model.getCurrentPlayer().getName()+ " turn");
 	}
 	public void handleButtonClick(int i, int j) {
 		if(!engine.isValidMove(i, j)) return;
 		this.view.setButtonText(i,j,engine.getCurrentPlayer().getSymbol()+"");
    		engine.getBoard().move(i, j, engine.getCurrentPlayer());
    		if(engine.checkIfCurrentPlayerwin()) {
-   			this.view.updateMyLabel("player "+ engine.getCurrentPlayer().getName() + " won!");
+   			this.view.updateStatus("player "+ engine.getCurrentPlayer().getName() + " won!");
    			engine.setGameover(true);
    			return;
    		}
    		engine.moveToNextPlayer(); 
-   		this.view.updateMyLabel("player "+ engine.getCurrentPlayer().getName()+ " turn");
+   		this.view.updateStatus("player "+ engine.getCurrentPlayer().getName()+ " turn");
    		
 
 	}
