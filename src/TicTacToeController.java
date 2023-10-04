@@ -2,11 +2,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TicTacToeController {
-	private Engine model;
+	private Engine engine;
 	private TicTacToeView view;
 	
 	public TicTacToeController(Engine model, TicTacToeView view, int size) {
-		this.model=model;
+		this.engine=model;
 		this.view=view;
 		
 		
@@ -26,21 +26,18 @@ public class TicTacToeController {
 			}
 		}
 		this.view.updateMyLabel("player "+ model.getCurrentPlayer().getName()+ " turn");
-		
-		 
-		
 	}
 	public void handleButtonClick(int i, int j) {
-		if(!model.isValidMove(i, j)) return;
-		this.view.setButtonText(i,j,model.getCurrentPlayer().getSymbol()+"");
-   		model.getBoard().move(i, j, model.getCurrentPlayer());
-   		if(model.checkIfCurrentPlayerwin()) {
-   			this.view.updateMyLabel("player "+ model.getCurrentPlayer().getName() + " won!");
-   			model.setGameover(true);
+		if(!engine.isValidMove(i, j)) return;
+		this.view.setButtonText(i,j,engine.getCurrentPlayer().getSymbol()+"");
+   		engine.getBoard().move(i, j, engine.getCurrentPlayer());
+   		if(engine.checkIfCurrentPlayerwin()) {
+   			this.view.updateMyLabel("player "+ engine.getCurrentPlayer().getName() + " won!");
+   			engine.setGameover(true);
    			return;
    		}
-   		model.moveToNextPlayer(); 
-   		this.view.updateMyLabel("player "+ model.getCurrentPlayer().getName()+ " turn");
+   		engine.moveToNextPlayer(); 
+   		this.view.updateMyLabel("player "+ engine.getCurrentPlayer().getName()+ " turn");
    		
 
 	}
