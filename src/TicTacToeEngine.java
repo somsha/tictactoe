@@ -12,6 +12,15 @@ public class TicTacToeEngine implements Engine{
 	    this.players = players;	
 	}
 	
+	@Override
+	public Board getBoard() {
+		return board;
+	}
+	
+	@Override
+	public Player[] getPlayers() {
+		return players;
+	}	
 	
 	@Override
 	public int getTurn() {
@@ -37,10 +46,6 @@ public class TicTacToeEngine implements Engine{
 	@Override
 	public boolean checkIfCurrentPlayerwin() {
 		return board.checkIfPlayerwin(getCurrentPlayer());
-	}
-	
-	public void move(int i,int j) {
-		board.move(i, j, getCurrentPlayer());
 	}
 	
 	@Override

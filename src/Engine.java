@@ -1,5 +1,10 @@
 
 public interface Engine {
+	
+	Board getBoard();
+	
+	Player[] getPlayers();
+	
 	Player getCurrentPlayer();
 
 	void moveToNextPlayer();
@@ -13,4 +18,8 @@ public interface Engine {
 	void setGameover(boolean gameover);
 
 	boolean checkIfCurrentPlayerwin();
+
+	
+
+	
 }

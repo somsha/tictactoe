@@ -2,10 +2,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TicTacToeController {
-	private TicTacToeEngine model;
+	private Engine model;
 	private TicTacToeView view;
 	
-	public TicTacToeController(TicTacToeEngine model, TicTacToeView view, int size) {
+	public TicTacToeController(Engine model, TicTacToeView view, int size) {
 		this.model=model;
 		this.view=view;
 		
@@ -33,7 +33,7 @@ public class TicTacToeController {
 	public void handleButtonClick(int i, int j) {
 		if(this.view.getButtonText(i,j) != " " || model.isGameover()) return;
 		this.view.setButtonText(i,j,model.getCurrentPlayer().getSymbol()+"");
-   		model.move(i,j);
+   		model.getBoard().move(i, j, model.getCurrentPlayer());
    		if(model.checkIfCurrentPlayerwin()) {
    			this.view.updateMyLabel("player "+ model.getCurrentPlayer().getName() + " won!");
    			model.setGameover(true);
