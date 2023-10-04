@@ -62,4 +62,9 @@ public class TicTacToeEngine implements Engine{
 	    return players[turn];
 	}
 
+	@Override
+	public boolean isValidMove(int i, int j) {
+		return (!this.board.isOccupied(i,j) && !gameover);
+	}
+
 }

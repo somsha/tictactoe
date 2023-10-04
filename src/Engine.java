@@ -18,8 +18,7 @@ public interface Engine {
 	void setGameover(boolean gameover);
 
 	boolean checkIfCurrentPlayerwin();
-
 	
+	boolean isValidMove(int i, int j);
 
-	
 }

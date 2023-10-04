@@ -70,6 +70,12 @@ public class TicTacToeBoard implements Board {
 		
 		return win;
 	}
+
+	@Override
+	public boolean isOccupied(int i, int j) {
+		
+		return board[i][j] != ' ';
+	}
 	
 
 }
